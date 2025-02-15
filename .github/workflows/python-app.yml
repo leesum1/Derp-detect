@@ -25,7 +25,8 @@ jobs:
           authkey: ${{ secrets.TSKEY }}
 
 
-          
+      - name: Tailscale script
+        run: tailscale status
         
  
       - name: astral-sh/setup-uv
