@@ -22,7 +22,7 @@ jobs:
         uses: tailscale/github-action@v2
         with:
           # Your Tailscale authentication key, from the admin panel.
-          authkey: ${{ env.TSKEY }}
+          authkey: ${{ secrets.TSKEY }}
 
 
           
