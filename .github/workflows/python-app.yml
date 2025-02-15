@@ -23,11 +23,13 @@ jobs:
         with:
           # Your Tailscale authentication key, from the admin panel.
           authkey: ${{ secrets.TSKEY }}
-
+      - name: Tailscale net
+        run: tailscale netcheck
 
       - name: Tailscale script
         run: tailscale status
-        
+      - name: Tailscale ping
+        run: tailscale ping ubuntu-kvm      
  
       - name: astral-sh/setup-uv
         # You may pin to the exact commit or the version.
