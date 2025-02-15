@@ -8,7 +8,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+      - name: Connect Tailscale
+        # You may pin to the exact commit or the version.
+        # uses: tailscale/github-action@4e4c49acaa9818630ce0bd7a564372c17e33fb4d
+        uses: tailscale/github-action@v2
+        with:
+          # Your Tailscale authentication key, from the admin panel.
+          authkey: "123"
+      - name: Install iperf3
+        run: apt install iperf3
+ 
       - name: astral-sh/setup-uv
         # You may pin to the exact commit or the version.
         # uses: astral-sh/setup-uv@4db96194c378173c656ce18a155ffc14a9fc4355
