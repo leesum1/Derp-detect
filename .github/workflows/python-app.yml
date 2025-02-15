@@ -10,8 +10,8 @@ jobs:
       - uses: actions/checkout@v4
 
 
-      - name: Debugging with tmate
-        uses: mxschmitt/action-tmate@v3.19
+      # - name: Debugging with tmate
+      #   uses: mxschmitt/action-tmate@v3.19
 
 
         
