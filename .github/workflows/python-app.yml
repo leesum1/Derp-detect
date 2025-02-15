@@ -8,8 +8,13 @@ jobs:
     environment: TSKEY
     steps:
       - uses: actions/checkout@v4
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+
+
+      - name: Debugging with tmate
+        uses: mxschmitt/action-tmate@v3.19
+
+
+        
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Cache APT Packages
