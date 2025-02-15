@@ -1,0 +1,12 @@
+[project]
+name = "derp-detect"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2.3",
+    "pip>=24.3.1",
+    "requests>=2.32.3",
+    "tqdm>=4.67.1",
+]
