@@ -4,25 +4,19 @@ on: [push, pull_request]
 
 jobs:
   run-script:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    # runs-on: self-hosted
     environment: TSKEY
     steps:
-      - uses: actions/checkout@v4
-
-
-      # - name: Debugging with tmate
-      #   uses: mxschmitt/action-tmate@v3.19
-
-
-        
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Cache APT Packages
         # You may pin to the exact commit or the version.
         # uses: awalsh128/cache-apt-pkgs-action@5902b33ae29014e6ca012c5d8025d4346556bd40
         uses: awalsh128/cache-apt-pkgs-action@v1.4.3
         with:
-    # Space delimited list of packages to install. Version can be specified optionally using APT command syntax of <name>=<version> (e.g. xdot=1.2-2).
+          # Space delimited list of packages to install. Version can be specified optionally using APT command syntax of <name>=<version> (e.g. xdot=1.2-2).
           packages: iperf3
       - name: Connect Tailscale
         # You may pin to the exact commit or the version.
@@ -31,21 +25,24 @@ jobs:
         with:
           # Your Tailscale authentication key, from the admin panel.
           authkey: ${{ secrets.TSKEY }}
+
       - name: Tailscale net
         run: tailscale netcheck
 
       - name: Tailscale script
         run: tailscale status
+
       - name: Tailscale ping
-        run: tailscale ping tailscale-iper3      
-        continue-on-error: true  
+        run: tailscale ping tailscale-iper3
+        continue-on-error: true
+
       - name: Iperf3 test
-        run: iperf3 -c tailscale-iper3      
-        continue-on-error: true  
+        run: iperf3 -c tailscale-iper3
+        continue-on-error: true
       - name: astral-sh/setup-uv
         # You may pin to the exact commit or the version.
         # uses: astral-sh/setup-uv@4db96194c378173c656ce18a155ffc14a9fc4355
         uses: astral-sh/setup-uv@v5.2.2
 
-      - name: Execute script
-        run: uv run main.py
+      # - name: Execute script
+      #   run: uv run main.py
