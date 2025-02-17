@@ -4,8 +4,8 @@ on: [push, pull_request]
 
 jobs:
   run-script:
-    runs-on: ubuntu-latest
-    # runs-on: self-hosted
+    # runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: TSKEY
     steps:
       - name: Checkout repository
