@@ -6,7 +6,6 @@ jobs:
   run-script:
     # runs-on: ubuntu-latest
     runs-on: self-hosted
-    environment: TSKEY
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -50,4 +49,4 @@ jobs:
 
       - name: Execute script
         # main.py [-h] --ori_csv ORI_CSV --final_csv FINAL_CSV --user USER --tskey TSKEY --iperf3_host IPERF3_HOST --iperf3_port IPERF3_PORT
-        run: uv run main.py --ori_csv reachable_urls.csv --final_csv reachable_urls_final.csv --user ${{ secrets.USER }} --tskey ${{ secrets.TSKEY }} --iperf3_host ${{ secrets.IPERF3_HOST }}  --iperf3_port ${{ secrets.IPERF3_PORT }}
+        run: uv run main.py --ori_csv reachable_urls.csv --final_csv reachable_urls_final.csv --user ${{ secrets.USER }} --tskey ${{ secrets.APIKEY }} --iperf3_host ${{ secrets.IPERF3_HOST }}  --iperf3_port ${{ secrets.IPERF3_PORT }}
