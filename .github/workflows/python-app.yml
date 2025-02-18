@@ -41,12 +41,13 @@ jobs:
         continue-on-error: true
 
       - name: Wget
-        run: wget https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1739811228185/reachable_urls.csv
-        
+        run: wget -O reachable_urls.csv ${{ secrets.FILE_URL }}
+
       - name: astral-sh/setup-uv
         # You may pin to the exact commit or the version.
         # uses: astral-sh/setup-uv@4db96194c378173c656ce18a155ffc14a9fc4355
         uses: astral-sh/setup-uv@v5.2.2
 
       - name: Execute script
-        run: ls
+        # main.py [-h] --ori_csv ORI_CSV --final_csv FINAL_CSV --user USER --tskey TSKEY --iperf3_host IPERF3_HOST --iperf3_port IPERF3_PORT
+        run: uv run main.py --ori_csv reachable_urls.csv --final_csv reachable_urls_final.csv --user ${{ secrets.USER }} --tskey ${{ secrets.TSKEY }} --iperf3_host tailscale-iper3 --iperf3_port 5201
