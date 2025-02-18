@@ -31,13 +31,13 @@ jobs:
       - name: Tailscale script
         run: tailscale status
 
-      - name: Tailscale ping
-        run: tailscale ping ${{ secrets.IPERF3_HOST }}
-        continue-on-error: true
+      # - name: Tailscale ping
+      #   run: tailscale ping ${{ secrets.IPERF3_HOST }}
+      #   continue-on-error: true
 
-      - name: Iperf3 test
-        run: iperf3 -c ${{ secrets.IPERF3_HOST }}
-        continue-on-error: true
+      # - name: Iperf3 test
+      #   run: iperf3 -c ${{ secrets.IPERF3_HOST }}
+      #   continue-on-error: true
 
       - name: Wget
         run: wget -O reachable_urls.csv ${{ secrets.FILE_URL }}
