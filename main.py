@@ -329,6 +329,9 @@ def tailscale_derp_test(ori_csv, final_csv, usename, tskey, iperf3_host, iperf3_
             print(f"iperf3 result for {ip}:{port}: {iperf3_ret}\n")
             final_result.append((ip, port, "success", iperf3_ret))
 
+    # final_result 按照  iperf3_ret 从大到小排序
+    final_result = sorted(final_result, key=lambda x: float(x[3]), reverse=True)
+
     # 将结果输出为 csv 文件
     with open(final_csv, mode="w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
